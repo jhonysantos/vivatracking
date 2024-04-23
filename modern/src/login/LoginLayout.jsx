@@ -3,6 +3,7 @@ import { useMediaQuery, Paper } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
 import { useTheme } from '@mui/material/styles';
 import LogoImage from './LogoImage';
+import gpsImage from '../resources/images/gps.jpg'; // Importe a imagem aqui
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -13,7 +14,9 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    background: theme.palette.primary.main,
+    backgroundImage: `url(${gpsImage})`, // Adicione a imagem de fundo aqui
+    backgroundSize: 'cover', // Ajuste o tamanho da imagem de fundo
+    backgroundPosition: 'center', // Centralize a imagem de fundo
     paddingBottom: theme.spacing(5),
     width: theme.dimensions.sidebarWidth,
     [theme.breakpoints.down('lg')]: {
@@ -60,3 +63,4 @@ const LoginLayout = ({ children }) => {
 };
 
 export default LoginLayout;
+

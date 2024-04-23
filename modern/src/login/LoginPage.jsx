@@ -17,6 +17,7 @@ import usePersistedState from '../common/util/usePersistedState';
 import { handleLoginTokenListeners, nativeEnvironment, nativePostMessage } from '../common/components/NativeInterface';
 import LogoImage from './LogoImage';
 import { useCatch } from '../reactHelper';
+import Typography from '@mui/material/Typography';
 
 const useStyles = makeStyles((theme) => ({
   options: {
@@ -219,7 +220,7 @@ const LoginPage = () => {
           <Button
             className={classes.registerButton}
             onClick={() => navigate('/register')}
-            disabled={!registrationEnabled}
+            disabled={registrationEnabled}
             color="secondary"
           >
             {t('loginRegister')}
@@ -240,16 +241,23 @@ const LoginPage = () => {
             </FormControl>
           )}
         </div>
-        {emailEnabled && (
-          <Link
-            onClick={() => navigate('/reset-password')}
-            className={classes.resetPassword}
-            underline="none"
-            variant="caption"
-          >
-            {t('loginReset')}
-          </Link>
-        )}
+        {!emailEnabled && (
+  <div>
+    <Typography variant="body1" style={{ display: 'inline' }}>
+      Esqueceu sua senha?
+    </Typography>
+    <Link
+      onClick={() => navigate('/reset-password')}
+      className={classes.resetPassword}
+      underline="none"
+      variant="caption"
+      style={{ display: 'inline', marginLeft: '5px' }} // Adicionando margem para separação visual
+    >
+      {t('loginReset')}
+    </Link>
+  </div>
+)}
+
       </div>
       <Snackbar
         open={!!announcement && !announcementShown}

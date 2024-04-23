@@ -6,12 +6,13 @@ import { VitePWA } from 'vite-plugin-pwa';
 /* eslint-disable no-template-curly-in-string */
 export default defineConfig(() => ({
   server: {
+    network: true,
     port: 3000,
     proxy: {
       '/api/socket': 'ws://localhost:8082',
       '/api': 'http://localhost:8082',
     },
-  },
+   },
   build: {
     outDir: 'build',
   },

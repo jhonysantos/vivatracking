@@ -2,7 +2,7 @@ import React from 'react';
 import { useTheme, useMediaQuery } from '@mui/material';
 import { useSelector } from 'react-redux';
 import { makeStyles } from '@mui/styles';
-import Logo from '../resources/images/logo.svg?react';
+import logo from '../resources/images/logo.png';
 
 const useStyles = makeStyles(() => ({
   image: {
@@ -20,16 +20,16 @@ const LogoImage = ({ color }) => {
 
   const expanded = !useMediaQuery(theme.breakpoints.down('lg'));
 
-  const logo = useSelector((state) => state.session.server.attributes?.logo);
-  const logoInverted = useSelector((state) => state.session.server.attributes?.logoInverted);
+  const logoUrl = useSelector((state) => state.session.server.attributes?.logo);
+  const logoInvertedUrl = useSelector((state) => state.session.server.attributes?.logoInverted);
 
-  if (logo) {
-    if (expanded && logoInverted) {
-      return <img className={classes.image} src={logoInverted} alt="" />;
+  if (logoUrl) {
+    if (expanded && logoInvertedUrl) {
+      return <img className={classes.image} src={logoInvertedUrl} alt="" />;
     }
-    return <img className={classes.image} src={logo} alt="" />;
+    return <img className={classes.image} src={logoUrl} alt="" />;
   }
-  return <Logo className={classes.image} style={{ color }} />;
+  return <img className={classes.image} src={logo} alt="" style={{ color }} />;
 };
 
 export default LogoImage;

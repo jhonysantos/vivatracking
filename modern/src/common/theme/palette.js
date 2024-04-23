@@ -1,4 +1,5 @@
 import { grey, green, indigo } from '@mui/material/colors';
+import gpsImage from '../../resources/images/gps.jpg';
 
 const validatedColor = (color) => (/^#([0-9A-Fa-f]{3}){1,2}$/.test(color) ? color : null);
 
@@ -19,4 +20,14 @@ export default (server, darkMode) => ({
   geometry: {
     main: '#3bb2d0',
   },
+  overrides: {
+    MuiCssBaseline: {
+      '@global': {
+        body: {
+          backgroundImage: `url(${gpsImage})`,
+        },
+      },
+    },
+  },
 });
+
